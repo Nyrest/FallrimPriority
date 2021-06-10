@@ -3,7 +3,7 @@
 Ensured the game **always take most of CPU usage, prevent suddenly lag caused by other processes**.  
 Kick other processes out. Skyrim/Fallout is the only one who should have whole CPU.  
 
-## Priority Classes
+## Priority Levels
 |     Priority | Value | 
 |------------- |------ |
 | Idle         | 0     |
