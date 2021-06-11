@@ -25,4 +25,4 @@ jobs:
                 path: |
                   Release\*
                   x64\Release\*
-              retention-days: 3
+                retention-days: 3
