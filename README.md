@@ -3,15 +3,15 @@
 Ensured the game **always take most of CPU usage, prevent suddenly lag caused by other processes**.  
 Kick other processes out. Skyrim/Fallout is the only one who should have whole CPU.  
 
-## Priority Classes
+## Priority Levels
 |     Priority | Value | 
 |------------- |------ |
-| Idle         | 64    |
-| Below Normal | 16384 |
-| Normal       | 32    |
-| Above Normal | 32768 |
-| High         | 128   |
-| Realtime     | 256   |
+| Idle         | 0     |
+| Below Normal | 1     |
+| Normal       | 2     |
+| Above Normal | 3     |
+| High         | 4     |
+| Realtime     | 5     |
 
 > This mod uses `High` by default  
 > You can change it in `PriorityMod.toml`
