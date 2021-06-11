@@ -5,6 +5,7 @@
 @ REM MSBuild is Available
 @ REM Build the solution
 :Build
+@ MSBuild /p:Configuration="Release" /p:Platform="Win32" /m
 @ MSBuild /p:Configuration="Release" /p:Platform="x64" /m
 @ exit /b
 
