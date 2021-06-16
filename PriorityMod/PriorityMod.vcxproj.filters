@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Targets">
-      <UniqueIdentifier>{9cb013cc-c31d-4380-abe7-dd9e637a8106}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -20,7 +17,7 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
+    <ClInclude Include="dllmain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -36,6 +33,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="PriorityMod.toml" />
+    <None Include="..\PriorityMod.toml" />
   </ItemGroup>
 </Project>

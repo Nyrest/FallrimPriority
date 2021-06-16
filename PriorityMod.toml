@@ -1,0 +1,23 @@
+[PriorityMod]
+
+## Priorities
+# No Change		= -1
+# Idle          = 0
+# Below Normal  = 1
+# Normal        = 2
+# Above Normal  = 3
+# High          = 4
+# Realtime      = 5     (Run as Administrator is required) (Not Recommended)
+# Check Microsoft official document for the details
+# https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setpriorityclass#parameters
+priority=4
+
+## Affinity
+# Process Affinity (0 = no change)
+# Check Microsoft official document for the details
+# https://docs.microsoft.com/en-us/windows/win32/procthread/processor-groups
+affinity=0
+
+[Processes]
+# For Oldrim ENB
+# enbhost.exe=3
