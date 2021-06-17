@@ -6,8 +6,9 @@ Kick other processes out. Skyrim/Fallout is the only one who should have whole C
 ## Supported Games
 - Skyrim  LE/SE/VR  
 - Enderal LE/SE/VR  
-- Fallout NV/3/4  
+- Fallout NV/3/4/VR  
 - Oblivion
+
 
 ## Priority Levels
 |     Priority | Value | 
