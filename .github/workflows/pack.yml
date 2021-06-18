@@ -24,19 +24,20 @@ jobs:
               uses: microsoft/setup-msbuild@v1.0.2
 
             # Install DotNet Script
-            - name: Build the Solution
+            - name: Install DotNet Script
               run: dotnet tool install -g dotnet-script
 
             # Build the Solution
             - name: Build the Solution
               run: .\build.bat
 
-            # Pack the Solution
-            - name: Build the Solution
+            # Pack
+            - name: Pack
               run: dotnet script pack.csx
 
-            # Upload Build Outputs
-            - uses: actions/upload-artifact@v2
+            # Upload Releases
+            - name: Upload Releases
+              uses: actions/upload-artifact@v2
               with:
                 name: Build Outputs
                 path: ModRelease\*
