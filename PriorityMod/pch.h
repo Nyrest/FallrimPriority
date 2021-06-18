@@ -12,4 +12,5 @@
 #include "toml.hpp"
 #include <fstream>
 #include <filesystem>
+using namespace std;
 #endif //PCH_H
