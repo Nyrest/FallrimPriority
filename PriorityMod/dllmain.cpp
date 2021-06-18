@@ -15,8 +15,8 @@ toml::parse_result config;
 
 bool ParseConfig()
 {
-	LPTSTR buffer = new TCHAR[_MAX_PATH];
-	GetModuleFileNameW((HINSTANCE)&__ImageBase, buffer, _MAX_PATH);
+	LPTSTR buffer = new TCHAR[_MAX_PATH * 3];
+	GetModuleFileNameW((HINSTANCE)&__ImageBase, buffer, _MAX_PATH * 3);
 
 	wstring filename = buffer;
 
