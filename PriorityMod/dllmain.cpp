@@ -9,7 +9,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 unsigned long affinity = 0;
 int priority = HIGH_PRIORITY_CLASS;
 unsigned long idle_affinity = 0;
-int idle_priority = HIGH_PRIORITY_CLASS;
+int idle_priority = BELOW_NORMAL_PRIORITY_CLASS;
 
 toml::parse_result config;
 
