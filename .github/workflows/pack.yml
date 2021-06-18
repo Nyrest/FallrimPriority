@@ -1,0 +1,45 @@
+name: Pack
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: windows-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            # Setup Nuget
+            - name: Setup NuGet
+              uses: NuGet/setup-nuget@v1.0.5
+
+            # Setup .NET Core SDK
+            - uses: actions@checkout@v2
+            - uses: actions/setup-dotnet@v1
+              with:
+                dotnet-version: '5.0.x'
+
+            # Setup MSBuild
+            - name: Setup MSBuild
+              uses: microsoft/setup-msbuild@v1.0.2
+
+            # Install DotNet Script
+            - name: Build the Solution
+              run: dotnet tool install -g dotnet-script
+
+            # Build the Solution
+            - name: Build the Solution
+              run: .\build.bat
+
+            # Pack the Solution
+            - name: Build the Solution
+              run: dotnet script pack.csx
+
+            # Upload Build Outputs
+            - uses: actions/upload-artifact@v2
+              with:
+                name: Build Outputs
+                path: |
+                  ModRelease\*
+                retention-days: 3
