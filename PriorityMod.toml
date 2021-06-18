@@ -2,7 +2,7 @@
 enabled=true
 
 ## Priorities
-# No Change		= -1
+# No Change     = -1
 # Idle          = 0
 # Below Normal  = 1
 # Normal        = 2
