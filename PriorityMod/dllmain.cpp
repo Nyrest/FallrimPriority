@@ -2,13 +2,14 @@
 #include "pch.h"
 #include <WinUser.h>
 #include <thread>
+#include <Tlhelp32.h>
 
 EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 unsigned long affinity = 0;
 int priority = HIGH_PRIORITY_CLASS;
 unsigned long idle_affinity = 0;
-int idle_priority = BELOW_NORMAL_PRIORITY_CLASS;
+int idle_priority = HIGH_PRIORITY_CLASS;
 
 toml::parse_result config;
 
@@ -28,14 +29,14 @@ bool ParseConfig()
 	return false;
 }
 
-void ApplyPriority(bool high = false)
+void ApplyPriority(bool high = true)
 {
 	auto val = high ? priority : idle_priority;
 	if (val != -1)
 		SetPriorityClass(GetCurrentProcess(), val);
 }
 
-void ApplyAffinity(bool high = false)
+void ApplyAffinity(bool high = true)
 {
 	auto val = high ? affinity : idle_affinity;
 	if (val != 0)
@@ -73,7 +74,7 @@ bool isHighPriority = true;
 void DynamicPriority(LPVOID)
 {
 	GetGameWindowHandle();
-	do
+	while (true)
 	{
 		if (GetForegroundWindow() == game_window) // focus
 		{
@@ -85,7 +86,7 @@ void DynamicPriority(LPVOID)
 		}
 		else
 		{
-			// if not responding go high
+			// if not responding go back to high priority
 			// more accurate than IsHungAppWindow
 			if (SendMessageTimeout(game_window, WM_NULL, NULL, NULL, SMTO_ABORTIFHUNG, 500, NULL) == 0)
 				goto highPrio;
@@ -99,8 +100,43 @@ void DynamicPriority(LPVOID)
 		}
 	conti:
 		Sleep(1000);
-	} while (true);
+	}
 }
+#pragma endregion
+
+#pragma region ENBHost
+#if !_WIN64
+unsigned long enbhost_affinity = 0;
+int enbhost_priority = HIGH_PRIORITY_CLASS;
+
+void EnbHostPriority(LPVOID)
+{
+	PROCESSENTRY32 proc32;
+	while (true)
+	{
+		HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+		if (hSnap != INVALID_HANDLE_VALUE && hSnap != 0)
+		{
+			proc32.dwSize = sizeof(PROCESSENTRY32);
+			while ((Process32Next(hSnap, &proc32)) == TRUE)
+			{
+				if (_wcsicmp(proc32.szExeFile, L"enbhost.exe") == 0)
+				{
+					HANDLE h = OpenProcess(PROCESS_SET_INFORMATION, TRUE, proc32.th32ProcessID);
+					if (enbhost_priority != -1)
+						SetPriorityClass(h, enbhost_priority);
+					if (enbhost_affinity != 0)
+						SetProcessAffinityMask(h, enbhost_affinity);
+					CloseHandle(h);
+				}
+			}
+			CloseHandle(hSnap);
+		}
+		else break;
+		Sleep(2000);
+	}
+}
+#endif // !_WIN64
 #pragma endregion
 
 BOOL APIENTRY DllMain(HMODULE hModule,
@@ -108,10 +144,11 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	LPVOID lpReserved
 )
 {
+	static HMODULE current;
+	GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&current, &current);
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
-		static HMODULE current;
-		GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&current, &current);
+		// Prevent mod being unloaded from Script Extender
 
 		int priority_classes[] = {
 			IDLE_PRIORITY_CLASS,
@@ -124,6 +161,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 
 		if (ParseConfig())
 		{
+			if (!config["PriorityMod"]["enabled"].value_or(true))
+				return true;
 #pragma region PriorityMod
 			int priorityValue = config["PriorityMod"]["priority"].value_or(4);
 			if (priorityValue != -1)
@@ -132,19 +171,30 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 #pragma endregion
 
 #pragma region DynamicPriority
-			int idle_priorityValue = config["DynamicPriority"]["idle_priority"].value_or(1);
-			if (idle_priorityValue != -1)
-				idle_priority = priority_classes[(idle_priorityValue >= 0 && idle_priorityValue <= 5) ? idle_priorityValue : 1];
+			priorityValue = config["DynamicPriority"]["idle_priority"].value_or(1);
+			if (priorityValue != -1)
+				idle_priority = priority_classes[(priorityValue >= 0 && priorityValue <= 5) ? priorityValue : 1];
 			idle_affinity = config["DynamicPriority"]["idle_affinity"].value_or(0);
 #pragma endregion
 
+#pragma region EnbHost
+#if !_WIN64
+			priorityValue = config["EnbHost"]["priority"].value_or(1);
+			if (priorityValue != -1)
+				enbhost_priority = priority_classes[(priorityValue >= 0 && priorityValue <= 5) ? priorityValue : 1];
+			enbhost_affinity = config["EnbHost"]["affinity"].value_or(0);
+#endif // !_WIN64
+#pragma endregion
+
+			if (config["DynamicPriority"]["enabled"].value_or(1))
+				_beginthread(DynamicPriority, NULL, NULL);
+
+#if !_WIN64
+			if (config["EnbHost"]["enabled"].value_or(1))
+				_beginthread(EnbHostPriority, NULL, NULL);
+#endif // !_WIN64
 		}
 
-		ApplyPriority();
-		ApplyAffinity();
-
-		if (config["DynamicPriority"]["enabled"].value_or(1))
-			_beginthread(DynamicPriority, NULL, NULL);
 	}
-	return TRUE;
+	return false;
 }

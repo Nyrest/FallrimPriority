@@ -1,4 +1,6 @@
 [PriorityMod]
+enabled=true
+
 ## Priorities
 # No Change		= -1
 # Idle          = 0
@@ -18,6 +20,7 @@ priority=4
 affinity=0
 
 ## Dynamic Priority
+# For people who have bAlwaysActive=true
 # Priority and affinity will set to value below when lost focus
 # Regain focus or not responding will set back to [PriorityMod] section
 [DynamicPriority]
@@ -26,8 +29,10 @@ idle_priority=1
 idle_affinity=0
 
 ## ENBHost Priority
-# Only for 32bit games.
+# Only for 32bit games with ENB.
 # Related code won't be included at Compile-Time in Fallrim Priority 64bit
+# So you don't need to disable it when you playing 64bit game
 [EnbHost]
+enabled=true
 priority=4
 affinity=0
