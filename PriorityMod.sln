@@ -5,6 +5,20 @@ VisualStudioVersion = 16.0.31320.298
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PriorityMod", "PriorityMod\PriorityMod.vcxproj", "{C1AD1366-094F-4BF8-A715-414693F89E73}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{D8F32DB4-30BD-4C8C-A144-40B5665052CA}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build.bat = build.bat
+		pack.csx = pack.csx
+		PriorityMod.toml = PriorityMod.toml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{5329C8F1-EC3F-42BD-80D7-AEA8D512EF35}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\pack.yml = .github\workflows\pack.yml
+		.github\workflows\validation.yml = .github\workflows\validation.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
