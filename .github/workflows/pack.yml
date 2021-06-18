@@ -15,7 +15,6 @@ jobs:
               uses: NuGet/setup-nuget@v1.0.5
 
             # Setup .NET Core SDK
-            - uses: actions@checkout@v2
             - uses: actions/setup-dotnet@v1
               with:
                 dotnet-version: '5.0.x'
@@ -40,6 +39,5 @@ jobs:
             - uses: actions/upload-artifact@v2
               with:
                 name: Build Outputs
-                path: |
-                  ModRelease\*
+                path: ModRelease\*
                 retention-days: 3
