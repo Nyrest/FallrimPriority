@@ -14,11 +14,13 @@ ModReleaseInfo[] outputs = new ModReleaseInfo[]
 {
     new ("Skyrim Priority LE" ,"SKSE", x86), // The Elder Scroll Skyrim SE/VR
     new ("Skyrim Priority SE" ,"SKSE", x86_64), // The Elder Scroll Skyrim LE
+    new ("Enderal Priority LE" ,"SKSE", x86), // Enderal LE
     new ("Enderal Priority SE" ,"SKSE", x86_64), // Enderal SE
     new ("Oblivion Priority" ,"OBSE", x86), // The Elder Scroll Oblivion
     new ("Fallout4 Priority" ,"F4SE", x86_64), // Fallout 4/VR
     new ("Fallout3 Priority" ,"FOSE", x86), // Fallout 3
     new ("NewVegas Priority" ,"NVSE", x86), // Fallout New Vegas
+    //new ("Redfall Priority" ,"RESE", x86_64), // The Elder Scroll Redfall
 };
 
 byte[] dll32 = File.ReadAllBytes($"{GetCompiledPath(x86)}\\{ModDllName}");
