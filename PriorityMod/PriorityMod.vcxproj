@@ -175,9 +175,6 @@
     </ClCompile>
     <ClCompile Include="toml.hpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\PriorityMod.toml" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
