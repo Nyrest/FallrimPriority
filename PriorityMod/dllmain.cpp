@@ -144,12 +144,11 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	LPVOID lpReserved
 )
 {
-	static HMODULE current;
-	GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&current, &current);
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
 		// Prevent mod being unloaded from Script Extender
-
+		static HMODULE current;
+		GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&current, &current);
 		int priority_classes[] = {
 			IDLE_PRIORITY_CLASS,
 			BELOW_NORMAL_PRIORITY_CLASS,
