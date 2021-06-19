@@ -15,6 +15,7 @@ ModReleaseInfo[] outputs = new ModReleaseInfo[]
 {
     new ("Skyrim Priority LE" ,"SKSE", x86), // The Elder Scroll Skyrim SE/VR
     new ("Skyrim Priority SE" ,"SKSE", x86_64), // The Elder Scroll Skyrim LE
+    new ("Enderal Priority SE" ,"SKSE", x86_64), // Enderal SE
     new ("Oblivion Priority" ,"OBSE", x86), // The Elder Scroll Oblivion
     new ("Fallout Priority" ,"F4SE", x86_64), // Fallout 4/VR
     new ("Fallout Priority 3" ,"FOSE", x86), // Fallout 3
