@@ -27,7 +27,7 @@ affinity = 0
 # Priority and affinity will set to value below when lost focus
 # Regain focus or not responding will set back to [PriorityMod] section
 [DynamicPriority]
-enabled = true
+enabled = false
 idle_priority = 1
 idle_affinity = 0
 
