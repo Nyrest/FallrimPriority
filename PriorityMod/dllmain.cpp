@@ -15,8 +15,8 @@ toml::parse_result config;
 
 bool ParseConfig()
 {
-	LPTSTR buffer = new TCHAR[_MAX_PATH * 3];
-	GetModuleFileNameW((HINSTANCE)&__ImageBase, buffer, _MAX_PATH * 3);
+	LPTSTR buffer = new WCHAR[_MAX_PATH * 3];
+	GetModuleFileName((HINSTANCE)&__ImageBase, buffer, _MAX_PATH * 3);
 
 	wstring filename = buffer;
 
@@ -63,6 +63,7 @@ BOOL CALLBACK enum_windows_callback(HWND handle, LPARAM lParam)
 
 void GetGameWindowHandle()
 {
+	
 	do
 	{
 		EnumWindows(enum_windows_callback, NULL);
@@ -146,9 +147,10 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 {
 	if (ul_reason_for_call == DLL_PROCESS_ATTACH)
 	{
-		// Prevent mod being unloaded from Script Extender
 		static HMODULE current;
-		GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&current, &current);
+		GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPTSTR)&DllMain, &current);
+
+		// Prevent mod being unloaded from Script Extender
 		int priority_classes[] = {
 			IDLE_PRIORITY_CLASS,
 			BELOW_NORMAL_PRIORITY_CLASS,
@@ -185,6 +187,9 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 #endif // !_WIN64
 #pragma endregion
 
+			ApplyAffinity();
+			ApplyPriority();
+
 			if (config["DynamicPriority"]["enabled"].value_or(1))
 				_beginthread(DynamicPriority, NULL, NULL);
 
@@ -195,5 +200,5 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 		}
 
 	}
-	return false;
+	return true;
 }

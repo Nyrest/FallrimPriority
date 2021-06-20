@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{D8F32DB4-3
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		build.bat = build.bat
+		pack.bat = pack.bat
 		pack.csx = pack.csx
 		PriorityMod.toml = PriorityMod.toml
 	EndProjectSection
