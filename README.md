@@ -1,4 +1,4 @@
-# Fallrim Priority [![GitHub](https://img.shields.io/github/license/BThree496/PriorityMod?style=flat-square&logo=github)](https://github.com/BThree496/PriorityMod/blob/main/LICENSE)
+# Fallrim Priority [![GitHub](https://img.shields.io/github/license/Erstori/FallrimPriority?style=flat-square&logo=github)](https://github.com/Erstori/FallrimPriority/blob/main/LICENSE)
 
 Ensured the game **always take most of CPU usage, prevent suddenly lag caused by other processes**.  
 Kick other processes out. Skyrim/Fallout is the only one who should have whole CPU.  
