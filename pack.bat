@@ -27,5 +27,5 @@
 @ REM Throw an exception
 :DotNetScriptNotFound
 @ echo DotNet-Script is not found. 1>&2
-@ echo Install by 'dotnet tool uninstall dotnet-script -g' 1>&2
+@ echo Install by 'dotnet tool install dotnet-script -g' 1>&2
 @ exit /b 1
