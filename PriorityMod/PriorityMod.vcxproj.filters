@@ -23,7 +23,7 @@
     <ClInclude Include="common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Targets\SkyrimSE.cpp">
+    <ClInclude Include="Targets\SkyrimSE AE.cpp">
       <Filter>Targets</Filter>
     </ClInclude>
     <ClInclude Include="Targets\NewVegas.cpp">
