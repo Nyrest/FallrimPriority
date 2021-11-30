@@ -30,10 +30,12 @@ struct PluginInfo
 	UInt32			version;
 };
 
-struct MasterInterface
+#if !_WIN64
+struct OldMasterInterface
 {
 	UInt32	obseVersion;
 	UInt32	oblivionVersion;
 	UInt32	editorVersion;
 	UInt32	isEditor;
 };
+#endif

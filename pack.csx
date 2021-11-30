@@ -12,10 +12,10 @@ const string ModTomlName = "PriorityMod.toml";
 
 ModReleaseInfo[] outputs = new ModReleaseInfo[]
 {
-    new ("Skyrim Priority LE",  "SKSE", x86),       // The Elder Scroll Skyrim SE/VR
-    new ("Skyrim Priority SE",  "SKSE", x86_64),    // The Elder Scroll Skyrim LE
+    new ("Skyrim Priority LE",  "SKSE", x86),       // The Elder Scroll Skyrim
+    new ("Skyrim Priority SE Anniversary",  "SKSE", x86_64),    // The Elder Scroll Skyrim SE/VR/AE
     new ("Enderal Priority LE", "SKSE", x86),       // Enderal LE
-    new ("Enderal Priority SE", "SKSE", x86_64),    // Enderal SE
+    new ("Enderal Priority SE Anniversary", "SKSE", x86_64),    // Enderal SE/VR/AE
     new ("Oblivion Priority",   "OBSE", x86),       // The Elder Scroll Oblivion
     new ("Fallout4 Priority",   "F4SE", x86_64),    // Fallout 4/VR
     new ("Fallout3 Priority",   "FOSE", x86),       // Fallout 3

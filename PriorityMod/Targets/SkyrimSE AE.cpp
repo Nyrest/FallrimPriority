@@ -3,9 +3,9 @@
 #if _WIN64
 extern "C"
 {
-	struct F4SEInterface
+	struct SKSEInterface
 	{
-		UInt32	f4seVersion;
+		UInt32	skseVersion;
 		UInt32	runtimeVersion;
 		UInt32	editorVersion;
 		UInt32	isEditor;
@@ -15,11 +15,15 @@ extern "C"
 		// invalid if called at any other time, so call it once and save the result
 		PluginHandle(*GetPluginHandle)(void);
 
-		// returns the F4SE build's release index
+		// returns the SKSE build's release index
 		UInt32(*GetReleaseIndex)(void);
+
+		// Minimum SKSE version 2.0.18
+		// returns the plugin info structure for a plugin by name, only valid to be called after PostLoad message
+		const PluginInfo* (*GetPluginInfo)(const char* name);
 	};
 
-	DllExport bool F4SEPlugin_Query(const F4SEInterface* se, PluginInfo* info)
+	DllExport bool SKSEPlugin_Query(const SKSEInterface* se, PluginInfo* info)
 	{
 		info->name = ModName;
 		info->infoVersion = PluginInfo::kInfoVersion;
@@ -27,7 +31,7 @@ extern "C"
 		return true;
 	}
 
-	DllExport bool F4SEPlugin_Load(const F4SEInterface* se)
+	DllExport bool SKSEPlugin_Load(const SKSEInterface* se)
 	{
 		return true;
 	}
