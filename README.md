@@ -4,8 +4,8 @@ Ensured the game **always take most of CPU usage, prevent suddenly lag caused by
 Kick other processes out. Skyrim/Fallout is the only one who should have whole CPU.  
 
 ## Supported Games
-- Skyrim  LE/SE/VR  
-- Enderal LE/SE/VR  
+- Skyrim  LE/SE/VR/AE  
+- Enderal LE/SE/VR/AE  
 - Fallout NV/3/4/VR  
 - Oblivion
 
