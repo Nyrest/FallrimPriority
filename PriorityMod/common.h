@@ -5,6 +5,9 @@
 #define ModName		"FallrimPriority";
 #define ModVersion	3;
 
+#define MAKE_EXE_VERSION_EX(major, minor, build, sub)	((((major) & 0xFF) << 24) | (((minor) & 0xFF) << 16) | (((build) & 0xFFF) << 4) | ((sub) & 0xF))
+#define MAKE_EXE_VERSION(major, minor, build)			MAKE_EXE_VERSION_EX(major, minor, build, 0)
+
 typedef unsigned char		UInt8;		//!< An unsigned 8-bit integer value
 typedef unsigned short		UInt16;		//!< An unsigned 16-bit integer value
 typedef unsigned long		UInt32;		//!< An unsigned 32-bit integer value
