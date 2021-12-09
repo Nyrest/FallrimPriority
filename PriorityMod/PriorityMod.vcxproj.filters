@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Targets">
-      <UniqueIdentifier>{6a53091c-4f08-4253-a437-5f360937c238}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -22,18 +19,6 @@
     </ClInclude>
     <ClInclude Include="common.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Targets\SkyrimSE AE.cpp">
-      <Filter>Targets</Filter>
-    </ClInclude>
-    <ClInclude Include="Targets\NewVegas.cpp">
-      <Filter>Targets</Filter>
-    </ClInclude>
-    <ClInclude Include="Targets\Oblivion.cpp">
-      <Filter>Targets</Filter>
-    </ClInclude>
-    <ClInclude Include="Targets\Fallout3.cpp">
-      <Filter>Targets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -46,11 +31,38 @@
     <ClCompile Include="toml.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\SkyrimSEAE.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
     <ClCompile Include="Targets\Fallout4.cpp">
-      <Filter>Targets</Filter>
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\NewVegas.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\Oblivion.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Targets\Oldrim.cpp">
-      <Filter>Targets</Filter>
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Targets\SkyrimSEAE.hpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
