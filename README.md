@@ -1,7 +1,7 @@
 # Fallrim Priority [![GitHub](https://img.shields.io/github/license/Erstori/FallrimPriority?style=flat-square&logo=github)](https://github.com/Erstori/FallrimPriority/blob/main/LICENSE)
 
-Ensured the game **always take most of CPU usage, prevent suddenly lag caused by other processes**.  
-Kick other processes out. Skyrim/Fallout is the only one who should have whole CPU.  
+Ensured the game **always takes most of the CPU usage, prevent sudden lag caused by other processes**.
+Kick other processes out. Skyrim/Fallout is the only one who should have the whole CPU.
 
 ## Supported Games
 - Skyrim  LE/SE/VR/AE  
