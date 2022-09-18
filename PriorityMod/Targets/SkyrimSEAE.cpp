@@ -36,6 +36,17 @@ extern "C"
 			kVersionIndependent_AddressLibraryPostAE = 1 << 0,
 			// set this if you exclusively use signature matching to find your addresses and have NO HARDCODED ADDRESSES
 			kVersionIndependent_Signatures = 1 << 1,
+			// set this if you are using 1.6.629+ compatible structure layout (likely provided by CommonLib/SKSE)
+			// this also marks you as incompatible with pre-1.6.629. see kVersionIndependentEx_NoStructUse if you have a
+			// plugin that only does code patches and works across many versions
+			kVersionIndependent_StructsPost629 = 1 << 2,
+		};
+
+		enum
+		{
+			// set this if your plugin either doesn't use any game structures or has put in extraordinary effort
+			// to work with pre and post 1.6.629 structure layout
+			kVersionIndependentEx_NoStructUse = 1 << 0,
 		};
 
 		UInt32	dataVersion;			// set to kVersion
@@ -44,9 +55,10 @@ extern "C"
 		char	name[256];				// null-terminated ASCII plugin name
 
 		char	author[256];			// null-terminated ASCII plugin author name (can be empty)
-		char	supportEmail[256];		// null-terminated ASCII support email address (can be empty)
+		char	supportEmail[252];		// null-terminated ASCII support email address (can be empty)
 
 		// version compatibility
+		UInt32	versionIndependenceEx;	// set to one of the kVersionIndependentEx_ enums or zero
 		UInt32	versionIndependence;	// set to one of the kVersionIndependent_ enums or zero
 		UInt32	compatibleVersions[16];	// zero-terminated list of RUNTIME_VERSION_ defines your plugin is compatible with
 
@@ -78,8 +90,9 @@ extern "C"
 		"Boring3",
 		"", // no support :)
 
+		SKSEPluginVersionData::kVersionIndependentEx_NoStructUse, // version independent
 		SKSEPluginVersionData::kVersionIndependent_Signatures, // version independent
-		{MAKE_EXE_VERSION(1, 6, 318),},					   // compatible with 1.6.318
+		{MAKE_EXE_VERSION(1, 6, 318), MAKE_EXE_VERSION(1, 6, 629)},					   // compatible with 1.6.318, 1.6.629
 
 
 		0, // works with any version of the script extender. you probably do not need to put anything here

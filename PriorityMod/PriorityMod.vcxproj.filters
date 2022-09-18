@@ -46,23 +46,20 @@
     <ClCompile Include="Targets\**">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Targets\SkyrimSEAE.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Targets\Fallout4.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Targets\NewVegas.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Targets\Oblivion.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Targets\Oldrim.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Targets\SkyrimSEAE.hpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="Targets\**">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
