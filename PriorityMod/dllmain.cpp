@@ -168,14 +168,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 			int priorityValue = config["PriorityMod"]["priority"].value_or(4);
 			if (priorityValue != -1)
 				priority = priority_classes[(priorityValue >= 0 && priorityValue <= 5) ? priorityValue : 4];
-			affinity = config["PriorityMod"]["affinity"].value_or(0);
+			affinity = config["PriorityMod"]["affinity"].value_or(0ul);
 #pragma endregion
 
 #pragma region DynamicPriority
 			priorityValue = config["DynamicPriority"]["idle_priority"].value_or(1);
 			if (priorityValue != -1)
 				idle_priority = priority_classes[(priorityValue >= 0 && priorityValue <= 5) ? priorityValue : 1];
-			idle_affinity = config["DynamicPriority"]["idle_affinity"].value_or(0);
+			idle_affinity = config["DynamicPriority"]["idle_affinity"].value_or(0ul);
 #pragma endregion
 
 #pragma region EnbHost
@@ -183,7 +183,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 			priorityValue = config["EnbHost"]["priority"].value_or(1);
 			if (priorityValue != -1)
 				enbhost_priority = priority_classes[(priorityValue >= 0 && priorityValue <= 5) ? priorityValue : 1];
-			enbhost_affinity = config["EnbHost"]["affinity"].value_or(0);
+			enbhost_affinity = config["EnbHost"]["affinity"].value_or(0ul);
 #endif // !_WIN64
 #pragma endregion
 
