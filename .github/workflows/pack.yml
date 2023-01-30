@@ -12,16 +12,16 @@ jobs:
 
             # Setup Nuget
             - name: Setup NuGet
-              uses: NuGet/setup-nuget@v1.0.5
+              uses: NuGet/setup-nuget@v1
 
             # Setup .NET Core SDK
-            - uses: actions/setup-dotnet@v1
+            - uses: actions/setup-dotnet@v3
               with:
-                dotnet-version: '5.0.x'
+                dotnet-version: '7.0.x'
 
             # Setup MSBuild
             - name: Setup MSBuild
-              uses: microsoft/setup-msbuild@v1.0.2
+              uses: microsoft/setup-msbuild@v1
 
             # Install DotNet Script
             - name: Install DotNet Script
@@ -37,8 +37,8 @@ jobs:
 
             # Upload Releases
             - name: Upload Releases
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v3
               with:
                 name: Build Outputs
                 path: ModRelease\*
-                retention-days: 3
+                retention-days: 31
