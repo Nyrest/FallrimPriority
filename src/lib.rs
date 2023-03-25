@@ -25,12 +25,7 @@ static mut MIN_THREADS: u32 = 6;
 
 static mut CURRENT_PROCESS_HANDLE: HANDLE = HANDLE(0);
 
-fn test() {
-    print!("Debug");
-}
-
 #[no_mangle]
-
 pub extern "system" fn DllMain(
     #[allow(non_snake_case)] hinstDLL: HINSTANCE,
     #[allow(non_snake_case)] fdwReason: i32,

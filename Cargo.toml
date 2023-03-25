@@ -9,6 +9,10 @@ crate-type = ["cdylib"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+skyrim_ae = []
+fallout_4 = []
+
 [dependencies]
 rust-ini = "0.18.0"
 msgbox = "0.7.0"
