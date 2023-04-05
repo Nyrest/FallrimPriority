@@ -29,6 +29,6 @@ pub unsafe extern "C" fn F4SEPlugin_Query(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn F4SEPlugin_Load(interface: *const F4SEInterface) -> bool {
+pub unsafe extern "C" fn F4SEPlugin_Load(_interface: *const F4SEInterface) -> bool {
     true
 }

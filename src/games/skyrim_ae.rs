@@ -67,6 +67,6 @@ pub unsafe extern "C" fn SKSEPlugin_Query(
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn SKSEPlugin_Load(interface: *const SKSEInterface) -> bool {
+pub unsafe extern "C" fn SKSEPlugin_Load(_interface: *const SKSEInterface) -> bool {
     true
 }

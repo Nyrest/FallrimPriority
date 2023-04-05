@@ -8,5 +8,3 @@ pub struct CommonPluginInfo {
     pub name: *mut c_char,
     pub version: u32,
 }
-
-pub static TITLE_FORMAT: &str = "{0} Priority";
