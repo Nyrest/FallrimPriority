@@ -31,7 +31,7 @@ mod tests_affinity {
     test_affinity_generic!("smt", 4, 8, 0x5555555555555555, 0x3);
 
     test_affinity_generic!("non_smt", 64, 64, 0xFFFFFFFFFFFFFFFF, 0x1);
-    test_affinity_generic!("smt", 48, 48, 0xFFFFFFFFFFFFFFFF, 0x1);
+    test_affinity_generic!("non_smt", 48, 48, 0xFFFFFFFFFFFFFFFF, 0x1);
     test_affinity_generic!("non_smt", 32, 32, 0xFFFFFFFFFFFFFFFF, 0x1);
     test_affinity_generic!("non_smt", 28, 28, 0xFFFFFFFFFFFFFFFF, 0x1);
     test_affinity_generic!("non_smt", 24, 24, 0xFFFFFFFFFFFFFFFF, 0x1);
