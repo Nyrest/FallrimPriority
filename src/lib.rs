@@ -3,7 +3,7 @@
 use std::slice;
 use std::str::FromStr;
 
-use affinity_helper::calc_best_affinity;
+use affinity_helper::{calc_best_affinity, get_mask_cpu0, get_mask_smt_first_processors};
 use ini::Properties;
 use windows::Win32::Foundation::{HANDLE, HINSTANCE};
 use windows::Win32::System::LibraryLoader::GetModuleFileNameW;
@@ -13,7 +13,7 @@ use windows::Win32::System::Threading::{
     PROCESS_CREATION_FLAGS, REALTIME_PRIORITY_CLASS,
 };
 
-mod affinity_helper;
+pub mod affinity_helper;
 mod games;
 
 static mut ENABLED: bool = true;
@@ -89,7 +89,7 @@ fn parse_ini_value<T: FromStr + 'static>(section: &Properties, key: &str, defaul
             Err(_) => {
                 report_error(
                     format!(
-                        "Founded key \"{0}\", but unable to parsed \"{1}\" as a valid value.",
+                        "Founded key \"{0}\", but unable to parse \"{1}\" as a valid value.",
                         key, str_value
                     )
                     .as_str(),
@@ -146,7 +146,21 @@ fn parse_affinity_mask(affinity: Option<&str>) -> usize {
             let affinity = affinity.as_str().trim();
             match affinity {
                 "auto" => {
-                    return unsafe { calc_best_affinity(DISABLE_CPU0, DISABLE_SMT, MIN_THREADS) };
+                    let num_cores = num_cpus::get_physical();
+                    let num_logical_processors = num_cpus::get();
+                    let mask_smt = get_mask_smt_first_processors();
+                    let mask_cpu0 = get_mask_cpu0();
+                    return unsafe {
+                        calc_best_affinity(
+                            num_cores,
+                            num_logical_processors,
+                            mask_smt,
+                            mask_cpu0,
+                            DISABLE_CPU0,
+                            DISABLE_SMT,
+                            MIN_THREADS,
+                        )
+                    };
                 }
                 _ => match usize::from_str_radix(affinity.trim_start_matches("0x"), 16) {
                     Ok(value) => return value,
